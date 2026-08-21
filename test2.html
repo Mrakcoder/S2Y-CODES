@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SHISHYA2YODDHA — From Shishya to Yoddha</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- 3D Model Viewer Web Component -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+
+<body>
+
+    <!-- HEADER & NAVIGATION -->
+    <header id="header">
+        <nav id="navbar" aria-label="Main Navigation">
+            <div class="nav-container">
+                <a href="#home" class="nav-logo">SHISHYA2YODDHA</a>
+                
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#mission" class="nav-link">Mission</a></li>
+                    <li><a href="#forces" class="nav-link">Forces</a></li>
+                    <li><a href="#journey" class="nav-link">SSB Journey</a></li>
+                    <li><a href="#resources" class="nav-link">Resources</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- HERO SECTION -->
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <p class="hero-subtitle">Defence • Discipline • Leadership</p>
+                <h1 class="hero-title">SHISHYA2YODDHA</h1>
+                <p class="hero-tagline">From Shishya to Yoddha</p>
+                <div class="hero-actions">
+                    <a href="#mission" class="btn btn-primary">Begin Your Journey</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- MISSION SECTION -->
+        <section id="mission" class="mission-section">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-label">Our Mission</span>
+                    <h2 class="section-title">Forge Your Path</h2>
+                    <p class="section-description">
+                        Shishya2Yoddha is a platform designed to guide aspirants from preparation to purpose through knowledge, discipline, leadership, and self-development.
+                    </p>
+                </header>
+
+                <div class="mission-grid">
+                    <div class="mission-visual">
+                        <div class="mission-symbol">S2Y</div>
+                    </div>
+
+                    <div class="mission-content">
+                        <h3>From Learning to Leadership</h3>
+                        <p>
+                            Every warrior begins as a student. The journey from Shishya to Yoddha is built through discipline, knowledge, courage, and continuous self-improvement.
+                        </p>
+                        <p>
+                            Shishya2Yoddha brings defence preparation, SSB guidance, study resources, quizzes, and interactive learning together in one comprehensive platform.
+                        </p>
+                        <a href="#journey" class="btn btn-secondary">Explore The Journey</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARMED FORCES SECTION -->
+        <section id="forces" class="forces-section">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-label">The Armed Forces</span>
+                    <h2 class="section-title">Explore The Forces</h2>
+                    <p class="section-description">
+                        Discover the world of India's Armed Forces through interactive 3D models and structured learning experiences.
+                    </p>
+                </header>
+
+                <div class="forces-grid">
+                    <!-- ARMY -->
+                    <article class="force-card">
+                        <div class="model-wrapper">
+                            <model-viewer src="models/army.glb" camera-controls auto-rotate shadow-intensity="1" exposure="0.9" alt="Indian Army 3D Model"></model-viewer>
+                            <div class="model-fallback">
+                                <span class="symbol">★</span>
+                                <p>Army 3D Model</p>
+                            </div>
+                        </div>
+                        <div class="force-info">
+                            <h3 class="force-name">INDIAN ARMY</h3>
+                            <p class="force-description">Land warfare, leadership, discipline, and the spirit of selfless service.</p>
+                            <a href="#army" class="btn btn-card">Explore</a>
+                        </div>
+                    </article>
+
+                    <!-- NAVY -->
+                    <article class="force-card">
+                        <div class="model-wrapper">
+                            <model-viewer src="models/navy.glb" camera-controls auto-rotate shadow-intensity="1" exposure="0.9" alt="Indian Navy 3D Model"></model-viewer>
+                            <div class="model-fallback">
+                                <span class="symbol">⚓</span>
+                                <p>Navy 3D Model</p>
+                            </div>
+                        </div>
+                        <div class="force-info">
+                            <h3 class="force-name">INDIAN NAVY</h3>
+                            <p class="force-description">Maritime strength, naval tradition, tactical superiority, and leadership at sea.</p>
+                            <a href="#navy" class="btn btn-card">Explore</a>
+                        </div>
+                    </article>
+
+                    <!-- AIR FORCE -->
+                    <article class="force-card">
+                        <div class="model-wrapper">
+                            <model-viewer src="models/airforce.glb" camera-controls auto-rotate shadow-intensity="1" exposure="0.9" alt="Indian Air Force 3D Model"></model-viewer>
+                            <div class="model-fallback">
+                                <span class="symbol">✈</span>
+                                <p>Air Force 3D Model</p>
+                            </div>
+                        </div>
+                        <div class="force-info">
+                            <h3 class="force-name">INDIAN AIR FORCE</h3>
+                            <p class="force-description">Air power, precision strikes, advanced technology, and courage above the clouds.</p>
+                            <a href="#airforce" class="btn btn-card">Explore</a>
+                        </div>
+                    </article>
+
+                    <!-- SSB -->
+                    <article class="force-card">
+                        <div class="model-wrapper">
+                            <model-viewer src="models/ssb.glb" camera-controls auto-rotate shadow-intensity="1" exposure="0.9" alt="SSB 3D Model"></model-viewer>
+                            <div class="model-fallback">
+                                <span class="symbol">◆</span>
+                                <p>SSB Experience</p>
+                            </div>
+                        </div>
+                        <div class="force-info">
+                            <h3 class="force-name">SSB EVALUATION</h3>
+                            <p class="force-description">Officer Like Qualities (OLQs), psychological tests, GTO tasks, and personal interview.</p>
+                            <a href="#ssb" class="btn btn-card">Explore</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SSB JOURNEY SECTION -->
+        <section id="journey" class="journey-section">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-label">Officer Selection</span>
+                    <h2 class="section-title">The SSB Journey</h2>
+                    <p class="section-description">Understand the five major stages of the Services Selection Board evaluation process.</p>
+                </header>
+
+                <ol class="journey-grid">
+                    <li class="journey-step">
+                        <span class="step-number">01</span>
+                        <h3>Stage I: Screening</h3>
+                        <p>OIR (Officer Intelligence Rating) tests, PPDT story writing, and group discussion stage.</p>
+                    </li>
+
+                    <li class="journey-step">
+                        <span class="step-number">02</span>
+                        <h3>Stage II: Psychology</h3>
+                        <p>TAT, WAT, SRT, and Self-Description (SD) psychometric battery assessment.</p>
+                    </li>
+
+                    <li class="journey-step">
+                        <span class="step-number">03</span>
+                        <h3>Stage III: GTO Tasks</h3>
+                        <p>Outdoor obstacle courses, progressive group tasks, group discussions, and leadership tests.</p>
+                    </li>
+
+                    <li class="journey-step">
+                        <span class="step-number">04</span>
+                        <h3>Stage IV: Personal Interview</h3>
+                        <p>In-depth personal interaction with the Interviewing Officer assessing Officer Like Qualities.</p>
+                    </li>
+
+                    <li class="journey-step">
+                        <span class="step-number">05</span>
+                        <h3>Stage V: Board Conference</h3>
+                        <p>Final evaluation panel interaction and recommendation decision by all assessors.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- RESOURCES SECTION -->
+        <section id="resources" class="resources-section">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-label">Prepare • Learn • Improve</span>
+                    <h2 class="section-title">Your Preparation Arsenal</h2>
+                    <p class="section-description">Everything you need to strengthen your preparation — organized in one place.</p>
+                </header>
+
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <div class="resource-icon">◈</div>
+                        <h3>Defence Resources</h3>
+                        <p>Explore official exam notifications, previous year question papers, and organized study modules.</p>
+                        <a href="#materials" class="btn btn-resource">Explore Materials</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <div class="resource-icon">❖</div>
+                        <h3>Interactive Quizzes</h3>
+                        <p>Test your knowledge with daily current affairs, static General Knowledge, and defense-related practice sets.</p>
+                        <a href="#quizzes" class="btn btn-resource">Start Quiz</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <div class="resource-icon">✦</div>
+                        <h3>OLQ Self-Assessment</h3>
+                        <p>Analyze your Officer Like Qualities and build structured daily habits for overall personality development.</p>
+                        <a href="#assessment" class="btn btn-resource">Assess Yourself</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="container footer-content">
+            <div class="brand">SHISHYA2YODDHA</div>
+            <p>&copy; 2026 Shishya2Yoddha. Dedicated to the Aspirants of the Indian Armed Forces.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
