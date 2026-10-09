@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHISHYA2YODDHA — From Shishya to Yoddha</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+   
+  
+</button>
+
+    <!-- 3D Model Viewer Web Component -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+
+    <!-- HEADER & NAVIGATION -->
+    <header id="header">
+        <nav id="navbar" aria-label="Main Navigation">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+    <img 
+        src="c:\Users\Surabhi\Downloads\Shishya to Yodha Emblem.png"
+        alt="Shishya to Yodha"
+        class="nav-logo-img"
+    >
+</a>
+
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <!-- Navigation links pointing to separate pages -->
+                <div class="nav-menu-wrapper">
+                    <ul class="nav-menu" id="navMenu">
+                        <div class="nav-progress-fill" id="navProgressFill"></div>
+                        <li class="nav-item"><a href="index.html" class="nav-link active" data-step="1">Home</a></li>
+                        <li class="nav-item"><a href="mission.html" class="nav-link" data-step="2">Mission</a></li>
+                        <li class="nav-item"><a href="3d-models.html" class="nav-link" data-step="3">3D Models</a></li>
+                        <li class="nav-item"><a href="ssb-journey.html" class="nav-link" data-step="4">SSB Journey</a></li>
+                        <li class="nav-item"><a href="question-papers.html" class="nav-link" data-step="5">Question Papers</a></li>
+                        <li class="nav-item"><a href="videos.html" class="nav-link" data-step="5">Defence Videos</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-actions">
+                    <a href="ssb-journey.html" class="btn btn-nav">Get Started</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HERO SECTION -->
+        <section id="home" class="hero-section">
+            <div class="flight-path-container">
+                <svg class="flight-svg" viewBox="0 0 1200 300" fill="none" preserveAspectRatio="none">
+                    <path class="dashed-flight-line" d="M0,150 Q300,20 600,160 T1200,80" stroke="rgba(255,111,30,0.25)" stroke-width="2" stroke-dasharray="8 8"/>
+                </svg>
+                <div class="flying-asset plane-asset">✈</div>
+                <div class="flying-asset chopper-asset"></div>
+            </div>
+
+            <div class="container hero-container reveal">
+                <div class="pill-badge">
+                    <span class="pill-radar"><span class="radar-ping"></span></span>
+                    <span>Defence • Discipline • Leadership</span>
+                </div>
+                <h1 class="hero-title">
+                    From Learning to Leadership<br>
+                    <span class="text-gradient-saffron">Shishya</span>2<span class="text-gradient-green">Yoddha</span>
+                </h1>
+                <p class="hero-tagline">
+                    An advanced ecosystem engineered for Indian Armed Forces aspirants to master examinations, hone psychometrics, and internalize Officer Like Qualities.
+                </p>
+                <div class="hero-actions">
+                    <a href="mission.html" class="btn btn-primary">
+                        <span>Begin Your Journey</span>
+                        <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="3d-models.html" class="btn btn-secondary">
+                        <span>Explore Forces 3D</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- MISSION PREVIEW SECTION -->
+        <section id="mission" class="mission-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-badge badge-saffron">Strategic Pillars</span>
+                    <h2 class="section-title">Engineered for Operational Excellence</h2>
+                    <p class="section-description">
+                        Bridging rigorous academic preparation with holistic military character development.
+                    </p>
+                </div>
+
+                <div class="tactical-layout reveal">
+                    <div class="radar-display">
+                        <div class="radar-rings">
+                            <div class="ring ring-outer"></div>
+                            <div class="ring ring-mid"></div>
+                            <div class="ring ring-inner"></div>
+                            <div class="radar-sweep"></div>
+                        </div>
+                        <div class="radar-center-content">
+                            <span class="radar-core-title">S2Y</span>
+                            <span class="radar-core-subtitle">COMMAND</span>
+                        </div>
+                        <div class="radar-tag tag-top"><span class="dot saffron-dot"></span> NDA / CDS / AFCAT</div>
+                        <div class="radar-tag tag-bottom-left"><span class="dot green-dot"></span> OLQ MATRIX</div>
+                        <div class="radar-tag tag-bottom-right"><span class="dot white-dot"></span> 3D ARSENAL</div>
+                    </div>
+
+                    <div class="stream-stack">
+                        <div class="stream-card stream-saffron">
+                            <div class="stream-indicator"></div>
+                            <div class="stream-content">
+                                <div class="stream-header">
+                                    <span class="stream-num">01</span>
+                                    <h4>Precision Knowledge Base</h4>
+                                </div>
+                                <p>Syllabi parsed into interactive modules designed to reinforce operational and tactical fundamentals with real-time feedback loops.</p>
+                            </div>
+                        </div>
+
+                        <div class="stream-card stream-white">
+                            <div class="stream-indicator"></div>
+                            <div class="stream-content">
+                                <div class="stream-header">
+                                    <span class="stream-num">02</span>
+                                    <h4>Psychometric Calibrations</h4>
+                                </div>
+                                <p>Algorithmic tracking to benchmark decision latency, situational reaction speed, and thematic apperception scoring.</p>
+                            </div>
+                        </div>
+
+                        <div class="stream-card stream-green">
+                            <div class="stream-indicator"></div>
+                            <div class="stream-content">
+                                <div class="stream-header">
+                                    <span class="stream-num">03</span>
+                                    <h4>Spatial Asset Familiarization</h4>
+                                </div>
+                                <p>360-degree interactive 3D weapon platforms and hardware visualizer for deep technical recall.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARMED FORCES 3D PREVIEW SECTION -->
+        <section id="forces" class="forces-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-badge badge-white">Interactive Arsenal</span>
+                    <h2 class="section-title">Explore The Forces</h2>
+                    <p class="section-description">
+                        Inspect defense platforms and equipment through web-native spatial 3D inspection.
+                    </p>
+                </div>
+
+                <div class="hud-grid">
+                    <article class="hud-card reveal">
+                        <span class="corner-cross cross-tl">+</span>
+                        <span class="corner-cross cross-tr">+</span>
+                        <span class="corner-cross cross-bl">+</span>
+                        <span class="corner-cross cross-br">+</span>
+                        
+                        <div class="model-wrapper">
+                            <model-viewer src="models/t-72.glb" camera-controls auto-rotate shadow-intensity="1" exposure="0.9" alt="Indian Army 3D Model"></model-viewer>
+                            <div class="model-fallback">
+                                <span class="symbol"></span>
+                                <p>Army Asset</p>
+                            </div>
+                        </div>
+                        <div class="hud-info">
+                            <div class="hud-meta">
+                                <span class="hud-status status-saffron">DOMAIN: TERRA</span>
+                                <span class="hud-code">SEC-01</span>
+                            </div>
+                            <h3 class="hud-title">INDIAN ARMY</h3>
+                            <p class="hud-desc">Land supremacy, tactical maneuvers, leadership, and unwavering resolve.</p>
+                            <a href="3d-models.html#army" class="btn btn-hud">Inspect Platform</a>
+                        </div>
+                    </article>
+
+                    <article class="hud-card reveal">
+                        <span class="corner-cross cross-tl">+</span>
+                        <span class="corner-cross cross-tr">+</span>
+                        <span class="corner-cross cross-bl">+</span>
+                        <span class="corner-cross cross-br">+</span>
+
+                        <div class="model-wrapper">
+                            <model-viewer src="models/INS_VIKRANT.glb" camera-controls auto-rotate shadow-intensity="1" exposure="0.9" alt="Indian Navy 3D Model"></model-viewer>
+                            <div class="model-fallback">
+                                <span class="symbol"></span>
+                                <p>Naval Asset</p>
+                            </div>
+                        </div>
+                        <div class="hud-info">
+                            <div class="hud-meta">
+                                <span class="hud-status status-white">DOMAIN: MARITIME</span>
+                                <span class="hud-code">SEC-02</span>
+                            </div>
+                            <h3 class="hud-title"></h3>
+                            <p class="hud-desc">Maritime domain awareness, blue-water superiority, and fleet tactics.</p>
+                            <a href="3d-models.html#navy" class="btn btn-hud">Inspect Platform</a>
+                        </div>
+                    </article>
+
+                    <article class="hud-card reveal">
+                        <span class="corner-cross cross-tl">+</span>
+                        <span class="corner-cross cross-tr">+</span>
+                        <span class="corner-cross cross-bl">+</span>
+                        <span class="corner-cross cross-br">+</span>
+
+                        <div class="model-wrapper">
+                            <model-viewer src="models/airforce.glb" camera-controls auto-rotate shadow-intensity="1" exposure="0.9" alt="Indian Air Force 3D Model"></model-viewer>
+                            <div class="model-fallback">
+                                <span class="symbol"></span>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="hud-info">
+                            <div class="hud-meta">
+                                <span class="hud-status status-green">DOMAIN: AERO</span>
+                                <span class="hud-code">SEC-03</span>
+                            </div>
+                            <h3 class="hud-title">INDIAN AIR FORCE</h3>
+                            <p class="hud-desc">Air dominance, precision strikes, and electronic aerospace warfare.</p>
+                            <a href="3d-models.html#airforce" class="btn btn-hud">Inspect Platform</a>
+                        </div>
+                    </article>
+
+                    <article class="hud-card reveal">
+                        <span class="corner-cross cross-tl">+</span>
+                        <span class="corner-cross cross-tr">+</span>
+                        <span class="corner-cross cross-bl">+</span>
+                        <span class="corner-cross cross-br">+</span>
+
+                        <div class="model-wrapper">
+                            <model-viewer src="models/ssb.glb" camera-controls auto-rotate shadow-intensity="1" exposure="0.9" alt="SSB 3D Model"></model-viewer>
+                            <div class="model-viewer">
+                                <span class="symbol">◆</span>
+                                <p>SSB Protocol</p>
+                            </div>
+                        </div>
+                        <div class="hud-info">
+                            <div class="hud-meta">
+                                <span class="hud-status status-saffron">DOMAIN: PSYCH</span>
+                                <span class="hud-code">SEC-04</span>
+                            </div>
+                            <h3 class="hud-title">SSB EVALUATION</h3>
+                            <p class="hud-desc">Quantified evaluation covering all 15 core Officer Like Qualities (OLQs).</p>
+                            <a href="ssb-journey.html" class="btn btn-hud">Inspect Matrix</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SSB PIPELINE -->
+        <section id="journey" class="journey-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-badge badge-green">Selection Pipeline</span>
+                    <h2 class="section-title">The 5-Day SSB Architecture</h2>
+                    <p class="section-description">A continuous milestone sequence from arrival to merit recommendation.</p>
+                </div>
+
+                <div class="pipeline-flow reveal">
+                    <div class="pipeline-track">
+                        <div class="traveling-tank" aria-label="Tank Traversing Timeline">
+                            <svg class="tank-svg" viewBox="0 0 36 24" fill="currentColor">
+                                <rect x="3" y="11" width="22" height="9" rx="2" fill="var(--saffron-base)" stroke="#ffffff" stroke-width="1.2"/>
+                                <rect x="8" y="6" width="12" height="6" rx="1.5" fill="var(--saffron-light)" stroke="#ffffff" stroke-width="1"/>
+                                <line x1="20" y1="9" x2="33" y2="9" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+                                <circle cx="7" cy="18" r="2.5" fill="#1e293b" stroke="#ffffff" stroke-width="0.8"/>
+                                <circle cx="14" cy="18" r="2.5" fill="#1e293b" stroke="#ffffff" stroke-width="0.8"/>
+                                <circle cx="21" cy="18" r="2.5" fill="#1e293b" stroke="#ffffff" stroke-width="0.8"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-node">
+                        <div class="node-marker">
+                            <span class="node-pulse"></span>
+                            <span class="node-num">01</span>
+                        </div>
+                        <div class="node-card">
+                            <div class="node-badge">Stage I</div>
+                            <h4>Screening</h4>
+                            <p>Officer Intelligence Rating (OIR) tests + Picture Perception & Discussion Test (PPDT).</p>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-node">
+                        <div class="node-marker">
+                            <span class="node-pulse"></span>
+                            <span class="node-num">02</span>
+                        </div>
+                        <div class="node-card">
+                            <div class="node-badge">Stage II</div>
+                            <h4>Psychology</h4>
+                            <p>Deep projective batteries: TAT (12 stories), WAT (60 words), SRT (60 situations), and SD.</p>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-node">
+                        <div class="node-marker">
+                            <span class="node-pulse"></span>
+                            <span class="node-num">03</span>
+                        </div>
+                        <div class="node-card">
+                            <div class="node-badge">Stage III</div>
+                            <h4>GTO Series</h4>
+                            <p>Dynamic outdoor group tasks, command tasks, lecturette, obstacle courses, and snake race.</p>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-node">
+                        <div class="node-marker">
+                            <span class="node-pulse"></span>
+                            <span class="node-num">04</span>
+                        </div>
+                        <div class="node-card">
+                            <div class="node-badge">Stage IV</div>
+                            <h4>Interview</h4>
+                            <p>Structured 1-on-1 interaction with IO examining background, awareness, and temperament.</p>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-node">
+                        <div class="node-marker">
+                            <span class="node-pulse"></span>
+                            <span class="node-num">05</span>
+                        </div>
+                        <div class="node-card">
+                            <div class="node-badge">Stage V</div>
+                            <h4>Conference</h4>
+                            <p>Joint panel review of holistic candidate profiles and formal merit recommendations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AVIONICS TELEMETRY TERMINAL (RESOURCES CONSOLE) -->
+        <section id="resources" class="resources-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-badge badge-saffron">Arsenal Modules</span>
+                    <h2 class="section-title">Preparation Command Console</h2>
+                    <p class="section-description">Integrated operational switchboard with real-time test calibrations.</p>
+                </div>
+
+                <div class="avionics-console reveal">
+                    <!-- Left: Control Column Selector -->
+                    <div class="console-sidebar">
+                        <div class="console-header-tag">
+                            <span class="blink-led"></span>
+                            <span>SYS_SELECT_CHANNEL</span>
+                        </div>
+                        
+                        <div class="channel-list">
+                            <button class="channel-btn active" data-target="panel-dossiers">
+                                <div class="chan-meta">
+                                    <span class="chan-code">CH-01</span>
+                                    <span class="chan-status status-saffron">ACTIVE</span>
+                                </div>
+                                <span class="chan-title">Defence Dossiers & Papers</span>
+                                <div class="chan-bar bar-saffron"></div>
+                            </button>
+
+                            <button class="channel-btn" data-target="panel-engine">
+                                <div class="chan-meta">
+                                    <span class="chan-code">CH-02</span>
+                                    <span class="chan-status status-white">STANDBY</span>
+                                </div>
+                                <span class="chan-title">Diagnostic Sim Engine</span>
+                                <div class="chan-bar bar-white"></div>
+                            </button>
+
+                            <button class="channel-btn" data-target="panel-matrix">
+                                <div class="chan-meta">
+                                    <span class="chan-code">CH-03</span>
+                                    <span class="chan-status status-green">READY</span>
+                                </div>
+                                <span class="chan-title">OLQ Calibration Matrix</span>
+                                <div class="chan-bar bar-green"></div>
+                            </button>
+                        </div>
+
+                        <div class="console-system-status">
+                            <div class="sys-row">
+                                <span>TELEMETRY</span>
+                                <span class="text-gradient-tricolor">ONLINE</span>
+                            </div>
+                            <div class="sys-row">
+                                <span>SERVER NODE</span>
+                                <code>IND-PUNE-01</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Active Telemetry Viewport -->
+                    <div class="console-viewport">
+                        <!-- Panel 1: Dossiers -->
+                        <div class="telemetry-panel active" id="panel-dossiers">
+                            <div class="panel-head">
+                                <div class="panel-title-wrap">
+                                    <span class="panel-sub">RESOURCE ARCHIVE // 01</span>
+                                    <h3 class="panel-title">Defence Resource Dossiers</h3>
+                                </div>
+                                <span class="tag-saffron">REPOSITORY</span>
+                            </div>
+                            
+                            <p class="panel-desc">Curated multi-tiered question archives, official CDS & NDA notifications, static GK battle summaries, and defense updates formatted for high-yield retention.</p>
+                            
+                            <div class="data-matrix-grid">
+                                <div class="matrix-cell">
+                                    <span class="cell-label">CURATED SETS</span>
+                                    <span class="cell-value text-gradient-saffron">140+ Files</span>
+                                    <span class="cell-foot">NDA • CDS • AFCAT</span>
+                                </div>
+                                <div class="matrix-cell">
+                                    <span class="cell-label">ACCURACY RATE</span>
+                                    <span class="cell-value">98.4%</span>
+                                    <span class="cell-foot">Verified Answers</span>
+                                </div>
+                                <div class="matrix-cell">
+                                    <span class="cell-label">UPDATE CYCLE</span>
+                                    <span class="cell-value text-gradient-green">Daily 06:00</span>
+                                    <span class="cell-foot">Real-time GK Feed</span>
+                                </div>
+                            </div>
+
+                            <div class="panel-bottom-action">
+                                <a href="question-papers.html" class="btn btn-primary">
+                                    <span>Access Question Papers</span>
+                                    <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Panel 2: Diagnostics -->
+                        <div class="telemetry-panel" id="panel-engine">
+                            <div class="panel-head">
+                                <div class="panel-title-wrap">
+                                    <span class="panel-sub">SIMULATION CORE // 02</span>
+                                    <h3 class="panel-title">Timed Diagnostic Engine</h3>
+                                </div>
+                                <span class="tag-white">SPEED SIMULATOR</span>
+                            </div>
+                            
+                            <p class="panel-desc">Algorithmic evaluation suite calibrating reaction speed across Verbal Reasoning, Spatial Orientation, Mechanical Comprehension, and Numerical Aptitude.</p>
+                            
+                            <div class="data-matrix-grid">
+                                <div class="matrix-cell">
+                                    <span class="cell-label">TEST BANK</span>
+                                    <span class="cell-value">5,200+ Qs</span>
+                                    <span class="cell-foot">OIR + GK + Logic</span>
+                                </div>
+                                <div class="matrix-cell">
+                                    <span class="cell-label">LATENCY TARGET</span>
+                                    <span class="cell-value text-gradient-saffron">&lt; 40 sec/Q</span>
+                                    <span class="cell-foot">Adaptive Speed</span>
+                                </div>
+                                <div class="matrix-cell">
+                                    <span class="cell-label">RANKING ENGINE</span>
+                                    <span class="cell-value text-gradient-green">National</span>
+                                    <span class="cell-foot">Percentile Grading</span>
+                                </div>
+                            </div>
+
+                            <div class="panel-bottom-action">
+                                <a href="question-papers.html" class="btn btn-primary">
+                                    <span>Initialize Simulator</span>
+                                    <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Panel 3: OLQ Matrix -->
+                        <div class="telemetry-panel" id="panel-matrix">
+                            <div class="panel-head">
+                                <div class="panel-title-wrap">
+                                    <span class="panel-sub">PSYCHOMETRIC BENCHMARK // 03</span>
+                                    <h3 class="panel-title">OLQ Self-Evaluation Matrix</h3>
+                                </div>
+                                <span class="tag-green">FACTOR AUDIT</span>
+                            </div>
+                            
+                            <p class="panel-desc">Structured 15-attribute psychometric matrix assessing Officer Like Qualities across Planning, Social Adaptability, Dynamic Guts, and Interview Readiness.</p>
+                            
+                            <div class="data-matrix-grid">
+                                <div class="matrix-cell">
+                                    <span class="cell-label">QUALITIES</span>
+                                    <span class="cell-value text-gradient-saffron">15 Factors</span>
+                                    <span class="cell-foot">Standard SSB Criteria</span>
+                                </div>
+                                <div class="matrix-cell">
+                                    <span class="cell-label">FACTOR SCOPES</span>
+                                    <span class="cell-value">4 Quadrants</span>
+                                    <span class="cell-foot">Planning to Dynamic</span>
+                                </div>
+                                <div class="matrix-cell">
+                                    <span class="cell-label">RADAR PLOT</span>
+                                    <span class="cell-value text-gradient-green">Included</span>
+                                    <span class="cell-foot">Visual Gap Analysis</span>
+                                </div>
+                            </div>
+
+                            <div class="panel-bottom-action">
+                                <a href="ssb-journey.html" class="btn btn-primary">
+                                    <span>Run Matrix Audit</span>
+                                    <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="container footer-content">
+            <div class="brand footer-logo">
+                <span class="logo-badge">S2Y</span>
+                <span class="logo-text">SHISHYA<span class="text-gradient-tricolor">2YODDHA</span></span>
+            </div>
+            <p class="footer-text">&copy; 2026 Shishya2Yoddha. Dedicated to the Aspirants of the Indian Armed Forces.</p>
+            <div class="footer-bottom-glow"></div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: NAVIGATION PROGRESS & INTERACTIVE TELEMETRY TABS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navMenu = document.getElementById('navMenu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navProgressFill = document.getElementById('navProgressFill');
+
+            // Mobile menu toggle
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Update Progress Bar in Navbar (1/5th to 5/5th)
+            function updateNavProgress(stepIndex) {
+                const percentage = stepIndex * 20;
+                if (navProgressFill) {
+                    navProgressFill.style.width = `${percentage}%`;
+                }
+            }
+
+            // Set initial state for home page (1/5th = 20%)
+            updateNavProgress(1);
+
+            // Avionics Console Channel Switcher
+            const channelBtns = document.querySelectorAll('.channel-btn');
+            const telemetryPanels = document.querySelectorAll('.telemetry-panel');
+
+            channelBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    channelBtns.forEach(b => b.classList.remove('active'));
+                    telemetryPanels.forEach(p => p.classList.remove('active'));
+
+                    btn.classList.add('active');
+                    const targetId = btn.getAttribute('data-target');
+                    const targetPanel = document.getElementById(targetId);
+                    if (targetPanel) {
+                        targetPanel.classList.add('active');
+                    }
+                });
+            });
+
+            // Scroll reveal animations
+            const reveals = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, idx) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('in-view');
+                        }, (idx % 3) * 120);
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: "0px 0px -40px 0px"
+            });
+
+            reveals.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+    <!-- TACTICAL VOICE AGENT WIDGET -->
+<div id="voiceAgentWidget" class="voice-widget-container">
+    <!-- Floating Trigger Button -->
+    <button id="voiceToggleBtn" class="voice-trigger-btn" aria-label="Open AI Voice Comms">
+        <span class="radar-ping" style="top: -6px; left: -6px; width: 44px; height: 44px;"></span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+    </button>
+
+    <!-- Expanded Voice HUD Panel -->
+    <div id="voicePanel" class="voice-panel hidden">
+        <div class="voice-header">
+            <span class="hud-status status-saffron">S2Y AI TACTICAL COMMS</span>
+            <button id="closeVoicePanel" class="close-btn">&times;</button>
+        </div>
+        <div class="voice-body">
+            <div id="voiceStatus" class="voice-status-text">Uplink Ready. Tap mic to speak.</div>
+            <!-- Audio Wave Animation Bars -->
+            <div class="audio-wave" id="audioWave">
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+            </div>
+            <div id="voiceTranscript" class="voice-transcript">"Awaiting command regarding NDA, CDS, or asset specs..."</div>
+        </div>
+        <div class="voice-footer">
+            <button id="micActionBtn" class="btn btn-primary" style="width: 100%; padding: 0.5rem;">
+                <span>Initialize Transmission</span>
+            </button>
+        </div>
+    </div>
+</div>
+    <script src="voice-agent.js"></script>
+</body>
+
+</html>

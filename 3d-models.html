@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Viewer | Shishya2Yoddha</title>
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Model Viewer Script for Interactive 3D Rendering -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <style>
+        /* Smooth scrolling behavior across the page */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* --- ADVANCED COMMAND CENTER GRID LAYOUT --- */
+        .hud-dashboard {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Desktop side-by-side layout */
+        @media (min-width: 1024px) {
+            .hud-dashboard {
+                grid-template-columns: 1.6fr 1fr; /* 3D viewer gets more space */
+                align-items: start;
+            }
+        }
+
+        /* --- 3D VIEWPORT STYLING --- */
+        .viewport-container {
+            position: relative;
+            background: radial-gradient(circle at center, rgba(37, 99, 235, 0.12) 0%, rgba(6, 8, 13, 0.95) 100%);
+            border: 1px solid var(--border-active, rgba(255, 255, 255, 0.22));
+            border-radius: var(--radius-lg, 22px);
+            box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(37, 99, 235, 0.1);
+            overflow: hidden;
+            height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* High-tech targeting grid overlay for the 3D space */
+        .targeting-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            z-index: 1;
+        }
+
+        .viewport-container model-viewer {
+            width: 100%;
+            height: 100%;
+            z-index: 2; /* Sits above the targeting grid */
+            outline: none;
+        }
+
+        /* --- DATA PANELS (RIGHT SIDE) --- */
+        .data-panels {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            max-height: 650px;
+            overflow-y: auto;
+            padding-right: 0.5rem; /* Space for the custom scrollbar */
+        }
+
+        /* Cyberpunk/HUD Scrollbar */
+        .data-panels::-webkit-scrollbar {
+            width: 4px;
+        }
+        .data-panels::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+        .data-panels::-webkit-scrollbar-thumb {
+            background: rgba(16, 185, 129, 0.5); /* Emerald Green scrollbar */
+            border-radius: 10px;
+        }
+
+        /* Upgrade info cards to look like interactive panels */
+        .advanced-info-card {
+            background: rgba(14, 18, 28, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg, 16px);
+            padding: 1.5rem;
+            backdrop-filter: blur(16px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .advanced-info-card:hover {
+            background: rgba(22, 29, 45, 0.88);
+            border-color: rgba(255, 111, 30, 0.4); /* Saffron hover border */
+            transform: translateX(-6px); /* Slides left slightly on hover */
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.4);
+        }
+        
+        /* Subtle glow line on the left of cards */
+        .advanced-info-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #ff6f1e, #10b981);
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+        .advanced-info-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Reset link styles */
+        .model-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+
+    <!-- ================= FIRST MODEL SECTION: AIRFORCE (SU-30 & MiG-29) ================= -->
+    <main class="hud-dashboard">
+
+        <!-- LEFT COLUMN: Interactive 3D Scanner Viewport -->
+        <section class="viewport-container">
+            <span class="corner-cross cross-tl">+</span>
+            <span class="corner-cross cross-tr">+</span>
+            <span class="corner-cross cross-bl">+</span>
+            <span class="corner-cross cross-br">+</span>
+            
+            <div class="targeting-grid"></div>
+            
+            <div class="hud-status-badge" style="position: absolute; top: 1.5rem; left: 1.5rem; z-index: 5;">
+                <span class="hud-status status-green" style="display: flex; align-items: center; gap: 8px;">
+                    <span class="blink-led"></span> LIVE MODEL VIEWER ACTIVE
+                </span>
+            </div>
+
+            <!-- 3D Model Canvas -->
+            <model-viewer src="models/airforce.glb" alt="Interactive 3D Defense Model" 
+                camera-controls auto-rotate rotation-per-second="30deg" 
+                touch-action="pan-y" shadow-intensity="1" exposure="0.95"
+                style="background-color: transparent;">
+            </model-viewer>
+        </section>
+
+        <!-- RIGHT COLUMN: Scrollable Asset Data Panels -->
+        <aside class="data-panels">
+            <!-- Asset Card 01 -->
+            <a href="https://en.wikipedia.org/wiki/Sukhoi_Su-30MKI" class="model-link" target="_blank">
+                <article id="asset-01" class="advanced-info-card">
+                    <div class="card-header">
+                        <div class="hud-meta" style="margin-bottom: 0.75rem;">
+                            <span class="hud-status status-saffron">AERIAL PLATFORM</span>
+                            <span class="hud-code">ASSET #01</span>
+                        </div>
+                        <h1 class="hud-title" style="font-size: 1.5rem; margin-bottom: 1rem;">SU-30MKI Air Superiority</h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="hud-desc">
+                            <h2>Click To read</h2>
+                            A twin-engine, multi-role air superiority fighter capable of all-weather, long-range missions. Features thrust-vectoring engines.
+                        </p>
+                        <div class="spec-grid">
+                            <div class="spec-item"><span class="spec-label">TOP SPEED</span><span class="spec-value">Mach 2.0</span></div>
+                            <div class="spec-item"><span class="spec-label">RANGE</span><span class="spec-value">3,000 km</span></div>
+                            <div class="spec-item"><span class="spec-label">CEILING</span><span class="spec-value">17,300 m</span></div>
+                            <div class="spec-item"><span class="spec-label">MAKER</span><span class="spec-value">HAL/Sukhoi</span></div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Asset Card 02 -->
+            <a href="https://en.wikipedia.org/wiki/Mikoyan_MiG-29" class="model-link" target="_blank">
+                <article id="asset-02" class="advanced-info-card">
+                    <div class="card-header">
+                        <div class="hud-meta" style="margin-bottom: 0.75rem;">
+                            <span class="hud-status status-white">INTERCEPTOR PLATFORM</span>
+                            <span class="hud-code">ASSET #02</span>
+                        </div>
+                        <h1 class="hud-title" style="font-size: 1.5rem; margin-bottom: 1rem;">MiG-29 Fighter</h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="hud-desc">
+                            A twin-engine air superiority fighter designed primarily for high-speed maneuverability and tactical aerial combat missions.
+                        </p>
+                        <div class="spec-grid">
+                            <div class="spec-item"><span class="spec-label">TOP SPEED</span><span class="spec-value">Mach 2.25</span></div>
+                            <div class="spec-item"><span class="spec-label">RANGE</span><span class="spec-value">1,430 km</span></div>
+                            <div class="spec-item"><span class="spec-label">CEILING</span><span class="spec-value">18,000 m</span></div>
+                            <div class="spec-item"><span class="spec-label">MAKER</span><span class="spec-value">Mikoyan</span></div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+        </aside>
+
+    </main>
+
+
+    <!-- ================= SECOND MODEL SECTION: GROUND ARMOR (T-72 Tank) ================= -->
+    <main class="hud-dashboard" style="margin-top: 4rem;">
+
+        <!-- LEFT COLUMN: Second Interactive 3D Scanner Viewport -->
+        <section class="viewport-container">
+            <span class="corner-cross cross-tl">+</span>
+            <span class="corner-cross cross-tr">+</span>
+            <span class="corner-cross cross-bl">+</span>
+            <span class="corner-cross cross-br">+</span>
+            
+            <div class="targeting-grid"></div>
+            
+            <div class="hud-status-badge" style="position: absolute; top: 1.5rem; left: 1.5rem; z-index: 5;">
+                <span class="hud-status status-saffron" style="display: flex; align-items: center; gap: 8px;">
+                    <span class="blink-led" style="background: var(--saffron-base); box-shadow: 0 0 8px var(--saffron-base);"></span> GROUND ASSET VIEWER ACTIVE
+                </span>
+            </div>
+
+            <!-- T-72 3D Model Canvas -->
+            <model-viewer src="models/t-72.glb" alt="Interactive 3D Ground Armor Model" 
+                camera-controls auto-rotate rotation-per-second="30deg" 
+                touch-action="pan-y" shadow-intensity="1" exposure="0.95"
+                style="background-color: transparent;">
+            </model-viewer>
+        </section>
+
+        <!-- RIGHT COLUMN: Second Set of Asset Data Panels -->
+        <aside class="data-panels">
+            <!-- Asset Card 03 -->
+            <a href="https://en.wikipedia.org/wiki/T-72" class="model-link" target="_blank">
+                <article id="asset-03" class="advanced-info-card">
+                    <div class="card-header">
+                        <div class="hud-meta" style="margin-bottom: 0.75rem;">
+                            <span class="hud-status status-green">GROUND COMBAT VEHICLE</span>
+                            <span class="hud-code">ASSET #03</span>
+                        </div>
+                        <h1 class="hud-title" style="font-size: 1.5rem; margin-bottom: 1rem;">Arjun (tank)</h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="hud-desc">
+                           Design & Development: Developed indigenously by the Combat Vehicles Research and Development Establishment (CVRDE) under the Defence Research and Development Organisation (DRDO) for the Indian Army.
+
+Manufacturer: Heavy Vehicles Factory (HVF) located in Avadi, Chennai.
+
+Main Armament: 120 mm rifled gun capable of firing advanced APFSDS (Armour-Piercing Fin-Stabilized Discarding Sabot) rounds, high-explosive squash head (HESH) shells, and anti-tank missiles.
+
+Armor Protection: Fitted with state-of-the-art Kanchan composite armor, offering enhanced defense against kinetic and chemical energy anti-tank projectiles.
+
+Powerplant & Mobility: Powered by an MTU MB 838 Ka501 multi-fuel diesel engine producing 1,400 horsepower, allowing speeds up to 70 km/h on paved roads.
+
+Combat Weight: Approximately 58.5 tonnes (Mk-I variant) up to 68.5 tonnes (Mk-II variant with enhanced upgrade packages).
+
+Operational Role: Engineered to serve as a heavily armored spearhead for breakthrough operations, combining high-precision fire control systems with robust battlefield survivability.
+                        </p>
+                        <div class="spec-grid">
+                            <div class="spec-item"><span class="spec-label">MAX SPEED</span><span class="spec-value">60 km/h</span></div>
+                            <div class="spec-item"><span class="spec-label">MAIN GUN</span><span class="spec-value">125 mm</span></div>
+                            <div class="spec-item"><span class="spec-label">WEIGHT</span><span class="spec-value">41.5 tonnes</span></div>
+                            <div class="spec-item"><span class="spec-label">ENGINE</span><span class="spec-value">V-46 V12</span></div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+        </aside>
+
+    </main>
+
+
+    <!-- ================= THIRD MODEL SECTION: INS VISHakhapatnam ================= -->
+    <main class="hud-dashboard" style="margin-top: 4rem;">
+
+        <!-- LEFT COLUMN: Third Interactive 3D Scanner Viewport -->
+        <section class="viewport-container">
+            <span class="corner-cross cross-tl">+</span>
+            <span class="corner-cross cross-tr">+</span>
+            <span class="corner-cross cross-bl">+</span>
+            <span class="corner-cross cross-br">+</span>
+
+            <div class="targeting-grid"></div>
+
+            <div class="hud-status-badge" style="position: absolute; top: 1.5rem; left: 1.5rem; z-index: 5;">
+                <span class="hud-status status-saffron" style="display: flex; align-items: center; gap: 8px;">
+                    <span class="blink-led" style="background: var(--saffron-base); box-shadow: 0 0 8px var(--saffron-base);"></span>
+                    NAVAL ASSET VIEWER ACTIVE
+                </span>
+            </div>
+
+            <!-- INS Visakhapatnam 3D Model Canvas -->
+            <model-viewer src="models/INS_VIKRANT.glb"
+                alt="Interactive 3D INS Visakhapatnam Destroyer Model"
+                camera-controls auto-rotate rotation-per-second="30deg"
+                touch-action="pan-y" shadow-intensity="1" exposure="0.95"
+                style="background-color: transparent;">
+            </model-viewer>
+        </section>
+
+        <!-- RIGHT COLUMN: Naval Asset Data Panel -->
+        <aside class="data-panels">
+
+            <a href="https://en.wikipedia.org/wiki/INS_Visakhapatnam"
+               class="model-link" target="_blank">
+
+                <article id="asset-04" class="advanced-info-card">
+
+                    <div class="card-header">
+                        <div class="hud-meta" style="margin-bottom: 0.75rem;">
+                            <span class="hud-status status-green">NAVAL PLATFORM</span>
+                            <span class="hud-code">ASSET #04</span>
+                        </div>
+
+                        <h1 class="hud-title" style="font-size: 1.5rem; margin-bottom: 1rem;">
+                            INS Visakhapatnam
+                        </h1>
+                    </div>
+
+                    <div class="card-body">
+
+                        <p class="hud-desc">
+                            INS Visakhapatnam is the lead ship of the Visakhapatnam-class
+                            stealth guided-missile destroyers of the Indian Navy.
+                        </p>
+
+                        <div class="spec-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">TYPE</span>
+                                <span class="spec-value">Guided-Missile Destroyer</span>
+                            </div>
+
+                            <div class="spec-item">
+                                <span class="spec-label">CLASS</span>
+                                <span class="spec-value">Visakhapatnam</span>
+                            </div>
+
+                            <div class="spec-item">
+                                <span class="spec-label">SERVICE</span>
+                                <span class="spec-value">Indian Navy</span>
+                            </div>
+
+                            <div class="spec-item">
+                                <span class="spec-label">ASSET</span>
+                                <span class="spec-value">NAVAL #04</span>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </article>
+
+            </a>
+
+        </aside>
+        
+
+    </main>
+    <!-- ================= END THIRD MODEL SECTION ================= -->
+
+    <!-- Script to trigger reveal animations & Voice Agent -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => el.classList.add('in-view'));
+        });
+    </script>
+    <script src="voice-agent.js"></script>
+    <!-- ==================== S2Y MISSION KIT ==================== -->
+<main class="hud-dashboard mission-kit-section">
+
+    <!-- Product Image / Main Attraction -->
+    <section class="viewport-container mission-kit-viewer">
+
+        <div class="status-bar">
+            <span>● MISSION KIT ONLINE</span>
+            <span>S2Y / PRODUCT-01</span>
+        </div>
+
+        <img
+            src="c:\Users\Surabhi\Downloads\s2y mission kit.jpeg"
+            alt="S2Y Mission Kit"
+            class="mission-kit-image"
+        >
+
+        <div class="asset-overlay">
+            <span>S2Y MISSION KIT</span>
+            <span>FOUNDING 10 EDITION</span>
+        </div>
+
+    </section>
+
+
+    <!-- Product Information -->
+    <aside class="data-panels">
+
+        <article class="advanced-info-card" id="mission-kit">
+
+            <div class="card-header">
+                <span>MISSION PRODUCT / #01</span>
+                <span>ACTIVE</span>
+            </div>
+
+            <h2>S2Y Mission Kit</h2>
+
+            <p>
+                A tactical mission box designed to develop the discipline,
+                initiative, courage, leadership and teamwork required on the
+                journey from Shishya to Yoddha.
+            </p>
+
+
+            <!-- Kit Contents -->
+            <div class="kit-contents">
+
+                <h3>MISSION KIT CONTENTS</h3>
+
+                <ul>
+                    <li> S2Y Challenge Coin</li>
+                    <li> OLQ Scenario Cards</li>
+                    <li> PPDT Picture & Story Cards</li>
+                    <li> 30-Day Mission Cards</li>
+                    <li> Achievement Patches</li>
+                    <li> Mini Compass</li>
+                    <li> QR Access to S2Y Mission Control</li>
+                </ul>
+
+            </div>
+
+
+            <!-- Founding 10 -->
+            <div class="founding-10">
+
+                <h3>FOUNDING 10</h3>
+
+                <p>
+                    The first 10 Mission Kits will be given completely free
+                    to 10 deserving students.
+                </p>
+
+                <strong>10 STUDENTS • 10 KITS • ₹0</strong>
+
+            </div>
+
+
+            <!-- Mission Statement -->
+            <div class="mission-statement">
+
+                <p>
+                    Your journey doesn't begin with a uniform.
+                    It begins with discipline.
+                </p>
+
+                <h3>
+                    FROM SHISHYA TO YODDHА.
+                </h3>
+
+            </div>
+
+
+            <!-- CTA -->
+            <div class="mission-action">
+
+                <a href="mission.html">
+                    BEGIN YOUR MISSION →
+                </a>
+
+            </div>
+
+        </article>
+
+    </aside>
+
+</main>
+
+<!-- ==================== END S2Y MISSION KIT ==================== -->
+</body>
+
+</html>

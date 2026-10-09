@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tactical Video Briefings — SHISHYA2YODDHA</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Video Grid Layout Extensions */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            transition: all var(--transition-smooth);
+            position: relative;
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.28);
+            background: var(--bg-card-hover);
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000000;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--white-pure);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-desc {
+            color: var(--white-muted);
+            font-size: 0.885rem;
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+
+    <!-- HEADER & NAVIGATION -->
+    <header id="header">
+        <nav id="navbar" aria-label="Main Navigation">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <span class="logo-badge">S2Y</span>
+                    <span class="logo-text">SHISHYA<span class="text-gradient-tricolor">2YODDHA</span></span>
+                </a>
+
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <div class="nav-menu-wrapper">
+                    <ul class="nav-menu" id="navMenu">
+                        <div class="nav-progress-fill" id="navProgressFill" style="width: 80%;"></div>
+                        <li class="nav-item"><a href="index.html" class="nav-link" data-step="1">Home</a></li>
+                        <li class="nav-item"><a href="mission.html" class="nav-link" data-step="2">Mission</a></li>
+                        <li class="nav-item"><a href="3d-models.html" class="nav-link" data-step="3">3D Models</a></li>
+                        <li class="nav-item"><a href="ssb-journey.html" class="nav-link" data-step="4">SSB Journey</a>
+                        </li>
+                        <li class="nav-item"><a href="question-papers.html" class="nav-link" data-step="5">Question
+                                Papers</a></li>
+                        <li class="nav-item"><a href="videos.html" class="nav-link active" data-step="6">Video
+                                Briefings</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-actions">
+                    <a href="ssb-journey.html" class="btn btn-nav">Get Started</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <section class="hero-section">
+            <div class="container hero-container">
+                <div class="pill-badge">
+                    <span class="pill-radar"><span class="radar-ping"></span></span>
+                    <span>Tactical Visual Intelligence Feed</span>
+                </div>
+                <h1 class="hero-title">
+                    Defense Briefings & <br>
+                    <span class="text-gradient-tricolor">Strategy Video Archive</span>
+                </h1>
+                <p class="hero-tagline">
+                    Expert lectures, SSB interview prep sessions, and strategic breakdown streams for Indian Armed
+                    Forces aspirants.
+                </p>
+            </div>
+        </section>
+
+        <section class="resources-section" style="padding-top: 0;">
+            <div class="container">
+
+                <div class="section-header">
+                    <span class="section-badge badge-saffron">Visual Briefings</span>
+                    <h2 class="section-title">Operational Strategy <br><span class="text-gradient-tricolor">Video
+                            Library</span></h2>
+                    <p class="section-description">Stream mission training modules and tactical masterclasses directly
+                        from command control.</p>
+                </div>
+
+                <div class="video-grid">
+                    <!-- Video Card 1 -->
+                    <article class="video-card">
+                        <div class="corner-cross cross-tl">+</div>
+                        <div class="corner-cross cross-tr">+</div>
+                        <div class="corner-cross cross-bl">+</div>
+                        <div class="corner-cross cross-br">+</div>
+
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="NDA Strategy Briefing"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-meta">
+                                <span class="hud-status status-saffron">STRATEGY MODULE</span>
+                                <span class="hud-code">INTEL #01</span>
+                            </div>
+                            <h3 class="video-title">NDA Exam Blueprint & Time Management</h3>
+                            <p class="video-desc">Comprehensive breakdown of Mathematics and GAT scoring patterns for
+                                top UPSC merit ranking.</p>
+                            <a href="https://www.youtube.com" target="_blank" class="btn btn-hud"><span>Open Source
+                                    Stream</span></a>
+                        </div>
+                    </article>
+
+                    <!-- Video Card 2 -->
+                    <article class="video-card">
+                        <div class="corner-cross cross-tl">+</div>
+                        <div class="corner-cross cross-tr">+</div>
+                        <div class="corner-cross cross-bl">+</div>
+                        <div class="corner-cross cross-br">+</div>
+
+                        <div class="video-wrapper">
+                            <img src="c:\Users\Surabhi\Downloads\Shishya to Yodha Emblem.png" alt="Shishya to Yodha"
+                                class="nav-logo-img">
+                        </div>
+                        <div class="video-info">
+                            <div class="video-meta">
+                                <span class="hud-status status-white">PSYCHOLOGICAL TEST</span>
+                                <span class="hud-code">INTEL #02</span>
+                            </div>
+                            <h3 class="video-title">SSB Psychology & TAT Mastery</h3>
+                            <p class="video-desc">Decoding officer-like qualities (OLQs) through structured Thematic
+                                Apperception Test story construction.</p>
+                            <a href="https://youtu.be/r432F86QBOI" target="_blank" class="btn btn-hud"><span>Click to Watch</a>
+                        </div>
+                    </article>
+
+                    <!-- Video Card 3 -->
+                    <article class="video-card">
+                        <div class="corner-cross cross-tl">+</div>
+                        <div class="corner-cross cross-tr">+</div>
+                        <div class="corner-cross cross-bl">+</div>
+                        <div class="corner-cross cross-br">+</div>
+
+                        <div class="video-wrapper">
+                            <iframe src="" title="Aerospace Asset Briefing" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-meta">
+                                <span class="hud-status status-green">HARDWARE TELEMETRY</span>
+                                <span class="hud-code">INTEL #03</span>
+                            </div>
+                            <h3 class="video-title">Indian Air Force Fighter Fleet Tactics</h3>
+                            <p class="video-desc">Tactical overview of air superiority assets including Sukhoi Su-30MKI
+                                operational capabilities.</p>
+                            <a href="" target="_blank" class="btn btn-hud"><span>Open Source Stream</span></a>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <span class="logo-badge">S2Y</span>
+                <span class="logo-text">SHISHYA<span class="text-gradient-tricolor">2YODDHA</span></span>
+            </div>
+            <p class="footer-text">&copy; 2026 Shishya2Yoddha. Dedicated to the Aspirants of the Indian Armed Forces.
+            </p>
+            <div class="footer-bottom-glow"></div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navMenu = document.getElementById('navMenu');
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+            }
+        });
+    </script>
+    <script src="voice-agent.js"></script>
+</body>
+
+</html>

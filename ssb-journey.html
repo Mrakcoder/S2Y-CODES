@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSB Journey — SHISHYA2YODDHA</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+
+    <!-- HEADER & NAVIGATION -->
+    <header id="header">
+        <nav id="navbar" aria-label="Main Navigation">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <img 
+        src="c:\Users\Surabhi\Downloads\Shishya to Yodha Emblem.png"
+        alt="Shishya to Yodha"
+        class="nav-logo-img"
+    ></span></span>
+                </a>
+
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <div class="nav-menu-wrapper">
+                    <ul class="nav-menu" id="navMenu">
+                        <div class="nav-progress-fill" id="navProgressFill" style="width: 80%;"></div>
+                        <li class="nav-item"><a href="index.html" class="nav-link" data-step="1">Home</a></li>
+                        <li class="nav-item"><a href="mission.html" class="nav-link" data-step="2">Mission</a></li>
+                        <li class="nav-item"><a href="3d-models.html" class="nav-link" data-step="3">3D Models</a></li>
+                        <li class="nav-item"><a href="ssb-journey.html" class="nav-link active" data-step="4">SSB Journey</a></li>
+                        <li class="nav-item"><a href="question-papers.html" class="nav-link" data-step="5">Question Papers</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-actions">
+                    <a href="ssb-journey.html" class="btn btn-nav">Get Started</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <section class="hero-section">
+            <div class="container hero-container reveal">
+                <div class="pill-badge">
+                    <span class="pill-radar"><span class="radar-ping"></span></span>
+                    <span>Selection Board Architecture</span>
+                </div>
+                <h1 class="hero-title">
+                    Master the <span class="text-gradient-saffron">5-Day SSB</span> <br>
+                    <span class="text-gradient-green">Evaluation Pipeline</span>
+                </h1>
+                <p class="hero-tagline">
+                    Detailed tactical roadmap breakdown covering Stage-I Screening, Psychology Batteries, Group Testing Officer (GTO) tasks, and Interview Technique.
+                </p>
+            </div>
+        </section>
+
+        <section class="journey-section">
+            <div class="container">
+                <div class="pipeline-flow reveal">
+                    <div class="pipeline-node">
+                        <div class="node-marker"><span class="node-num">01</span></div>
+                        <div class="node-card">
+                            <div class="node-badge">Day 1</div>
+                            <h4>Screening Test</h4>
+                            <p>Officer Intelligence Rating (OIR) verbal & non-verbal tests followed by PPDT picture story writing and group discussion.</p>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-node">
+                        <div class="node-marker"><span class="node-num">02</span></div>
+                        <div class="node-card">
+                            <div class="node-badge">Day 2</div>
+                            <h4>Psychology Batteries</h4>
+                            <p>Projective tests including TAT (12 slides), WAT (60 words), SRT (60 situations), and Self Description (SD).</p>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-node">
+                        <div class="node-marker"><span class="node-num">03</span></div>
+                        <div class="node-card">
+                            <div class="node-badge">Day 3</div>
+                            <h4>GTO Series Part I</h4>
+                            <p>Group Discussions, Military Planning Exercise, Progressive Group Task, Half Group Task, and Snake Race.</p>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-node">
+                        <div class="node-marker"><span class="node-num">04</span></div>
+                        <div class="node-card">
+                            <div class="node-badge">Day 4</div>
+                            <h4>GTO Series Part II & Interview</h4>
+                            <p>Individual Obstacles, Command Task, Final Group Task, and personal interview interaction with the IO.</p>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-node">
+                        <div class="node-marker"><span class="node-num">05</span></div>
+                        <div class="node-card">
+                            <div class="node-badge">Day 5</div>
+                            <h4>Board Conference</h4>
+                            <p>Final joint board evaluation by all officers followed by merit recommendation results declaration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <span class="logo-badge">S2Y</span>
+                <span class="logo-text">SHISHYA<span class="text-gradient-tricolor">2YODDHA</span></span>
+            </div>
+            <p class="footer-text">&copy; 2026 Shishya2Yoddha. Dedicated to the Aspirants of the Indian Armed Forces.</p>
+            <div class="footer-bottom-glow"></div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navMenu = document.getElementById('navMenu');
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+            }
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => el.classList.add('in-view'));
+        });
+    </script>
+    <script src="voice-agent.js"></script>
+</body>
+
+</html>
