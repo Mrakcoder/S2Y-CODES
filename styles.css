@@ -1,0 +1,2047 @@
+/* ==========================================================================
+   SHISHYA2YODDHA — UNIFIED DESIGN SYSTEM
+   Dominant Palette: Saffron (#ff6f1e), White (#ffffff), Green (#10b981)
+   Subtle Accent: Ashoka Chakra Navy Blue (#1d4ed8 / #2563eb)
+   ========================================================================== */
+
+/* --- 1. DESIGN TOKENS & VARIABLE ARCHITECTURE --- */
+:root {
+  /* Canvas Backgrounds */
+  --bg-main: #204297;
+  --bg-surface: #0c101a;
+  --bg-card: rgba(14, 18, 28, 0.72);
+  --bg-card-hover: rgba(22, 29, 45, 0.88);
+
+  /* Hairlines & Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(255, 255, 255, 0.22);
+
+  /* Dominant Colors: Saffron */
+  --saffron-base: #ff6f1e;
+  --saffron-light: #ffa24c;
+  --saffron-amber: #ffbe3b;
+  --saffron-glow: rgba(255, 111, 30, 0.45);
+
+  /* Dominant Colors: White */
+  --white-pure: #ffffff;
+  --white-muted: #94a3b8;
+  --white-faint: rgba(255, 255, 255, 0.04);
+
+  /* Dominant Colors: Green */
+  --green-base: #059669;
+  --green-light: #10b981;
+  --green-emerald: #34d399;
+  --green-glow: rgba(16, 185, 129, 0.45);
+
+  /* Traces Accent: Ashoka Chakra Navy Blue */
+  --chakra-navy: #1e3a8a;
+  --chakra-blue: #2563eb;
+  --chakra-blue-light: #60a5fa;
+  --chakra-blue-glow: rgba(37, 99, 235, 0.35);
+
+  /* Typography */
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-serif: 'Cinzel', serif;
+
+  /* UI Tokens */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 9999px;
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.25s var(--ease-spring);
+  --transition-smooth: 0.45s var(--ease-spring);
+}
+
+/* --- 2. RESET & BASE LAYOUT --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-main);
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-main);
+  color: var(--white-pure);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --- 3. AMBIENT BACKGROUND WITH SUBTLE CHAKRA BLUE BLUR ACCENTS --- */
+.bg-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  /* Balanced blend: Saffron (Top Left), Ashoka Chakra Blue (Center Blur Accent), Green (Bottom Right) */
+  background: 
+    radial-gradient(ellipse 65% 50% at 12% 8%, rgba(255, 111, 30, 0.2), transparent 10%),
+    radial-gradient(ellipse 45% 45% at 50% 50%, rgba(37, 99, 235, 0.16), transparent 65%),
+    radial-gradient(ellipse 65% 50% at 88% 92%, rgba(16, 185, 129, 0.18), transparent 70%);
+}
+
+
+main, header, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- 4. ANIMATIONS & TYPOGRAPHY GRADIENTS --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--ease-spring), transform 0.8s var(--ease-spring);
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-gradient-saffron {
+  background: linear-gradient(135deg, var(--saffron-amber), var(--saffron-base));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-green {
+  background: linear-gradient(135deg, var(--green-emerald), var(--green-base));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-tricolor {
+  /* Dynamic Tiranga Gradient with subtle Ashoka Chakra Blue center highlight */
+  background: linear-gradient(
+    90deg, 
+    var(--saffron-light) 0%, 
+    #ffffff 35%, 
+    var(--chakra-blue-light) 50%, 
+    #ffffff 65%, 
+    var(--green-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- 5. HEADER, NAVBAR & PROGRESS CAPSULE --- */
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(6, 8, 13, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.nav-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  font-family: var(--font-display);
+}
+.nav-logo-img {
+    height: 88px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.logo-badge {
+  background: linear-gradient(135deg, var(--saffron-base), var(--chakra-blue), var(--green-base));
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 12px rgba(255, 111, 30, 0.3);
+}
+
+.logo-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white-pure);
+}
+
+.nav-menu-wrapper {
+  position: relative;
+}
+
+/* Navbar Progress Capsule Track */
+.nav-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.3rem 0.35rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+/* Dynamic Luminous Tiranga Fill Bar */
+.nav-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 20%;
+  /* Continuous blend without harsh blue stripes */
+  background: linear-gradient(
+    90deg, 
+    #ff6f1e 0%, 
+    #ffa970 28%,
+    #ffffff 50%, 
+    #6ee7b7 72%,
+    #10b981 100%
+  ) !important;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  /* Ashoka Chakra Blue glow moved to outer ambient halo */
+  box-shadow: 
+    0 0 16px rgba(255, 111, 30, 0.5),
+    0 0 22px rgba(37, 99, 235, 0.45), 
+    0 0 16px rgba(16, 185, 129, 0.5);
+  pointer-events: none;
+  z-index: 0;
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-item {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-link {
+  display: inline-block;
+  color: var(--white-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--white-pure);
+}
+
+/* Dark high-contrast active text on top of the bright progress pill */
+.nav-link.active {
+  color: #060911 !important;
+  font-weight: 800 !important;
+  text-shadow: none;
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.mobile-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white-pure);
+  margin: 4px 0;
+}
+
+/* --- 6. UNIFIED VIBRANT BUTTONS SYSTEM --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-family: var(--font-main);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+/* Primary Hero & Call-to-Action Buttons (Vibrant Tiranga Gradient) */
+.btn-primary {
+  background: linear-gradient(
+    90deg, 
+    #ff5c00 0%, 
+    #ff9e6d 28%, 
+    #ffffff 50%, 
+    #71c894 72%, 
+    #046e38 100%
+  ) !important;
+  color: #000000 !important;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 0 22px rgba(255, 92, 0, 0.4),
+    0 0 28px rgba(37, 99, 235, 0.35),
+    0 0 22px rgba(4, 110, 56, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(
+    90deg, 
+    #ff4b00 0%, 
+    #ffa97b 28%, 
+    #ffffff 50%, 
+    #5dcd88 72%, 
+    #035b2e 100%
+  ) !important;
+  color: #000000 !important;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 0 32px rgba(255, 92, 0, 0.6),
+    0 0 35px rgba(37, 99, 235, 0.5),
+    0 0 32px rgba(4, 110, 56, 0.6),
+    inset 0 1px 0 #ffffff;
+}
+
+.btn-primary .btn-arrow {
+  stroke: #0b150f;
+  stroke-width: 2.2;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(37, 99, 235, 0.12) 50%, rgba(255, 255, 255, 0.02) 100%);
+  color: var(--white-pure);
+  border: 1px solid var(--border-active);
+  backdrop-filter: blur(12px);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, rgba(255, 111, 30, 0.25) 0%, rgba(37, 99, 235, 0.25) 50%, rgba(16, 185, 129, 0.25) 100%);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.3);
+}
+
+.btn-nav {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border-subtle);
+  color: var(--white-pure);
+  padding: 0.45rem 1.1rem;
+}
+
+.btn-nav:hover {
+  background: linear-gradient(135deg, rgba(255, 111, 30, 0.25), rgba(37, 99, 235, 0.25), rgba(16, 185, 129, 0.25));
+  border-color: var(--border-active);
+}
+
+/* Vibrant HUD Platform Inspection Buttons */
+.btn-hud {
+  width: 100%;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 111, 30, 0.22) 0%, 
+    rgba(255, 255, 255, 0.08) 50%, 
+    rgba(16, 185, 129, 0.22) 100%
+  ) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  color: var(--white-pure) !important;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 1.25rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(255, 111, 30, 0.2),
+    0 0 12px rgba(16, 185, 129, 0.2);
+  transition: all var(--transition-smooth);
+}
+
+.btn-hud:hover {
+  /* Luminous, smooth Tiranga gradient transition */
+  background: linear-gradient(
+    90deg, 
+    #ff6f1e 0%, 
+    #ffa86f 25%, 
+    #ffffff 50%, 
+    #6ee7b7 75%, 
+    #059669 100%
+  ) !important;
+  color: #060911 !important;
+  font-weight: 800;
+  border-color: #ffffff !important;
+  /* Diffused outer aura combining Saffron, Chakra Navy Blue, and Emerald Green */
+  box-shadow: 
+    0 0 20px rgba(255, 111, 30, 0.55),
+    0 0 28px rgba(37, 99, 235, 0.45),
+    0 0 20px rgba(16, 185, 129, 0.55) !important;
+  transform: translateY(-2px);
+}
+
+.btn-arrow {
+  width: 15px;
+  height: 15px;
+  transition: transform var(--transition-fast);
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* --- 7. HERO SECTION & FLIGHT PATH --- */
+.hero-section {
+  padding: 6.5rem 1.5rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.flight-path-container {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+.flight-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.flying-asset {
+  position: absolute;
+  font-size: 1.25rem;
+  filter: drop-shadow(0 0 8px rgba(255, 111, 30, 0.6));
+}
+
+.plane-asset {
+  animation: flyPlane 12s linear infinite;
+  top: 30px;
+}
+
+.chopper-asset {
+  animation: flyChopper 18s linear infinite;
+  top: 90px;
+  font-size: 1rem;
+}
+
+@keyframes flyPlane {
+  0% { transform: translateX(-5vw) translateY(40px) rotate(10deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(105vw) translateY(-20px) rotate(-5deg); opacity: 0; }
+}
+
+@keyframes flyChopper {
+  0% { transform: translateX(105vw) translateY(-10px) scaleX(-1); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateX(-5vw) translateY(60px) scaleX(-1); opacity: 0; }
+}
+
+.hero-container {
+  max-width: 860px;
+  position: relative;
+  z-index: 1;
+}
+
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  color: var(--white-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 1.75rem;
+  backdrop-filter: blur(10px);
+}
+
+.pill-radar {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  background: var(--saffron-base);
+  border-radius: 50%;
+}
+
+.radar-ping {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--saffron-base);
+  border-radius: 50%;
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.5vw, 4.3rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -1px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-tagline {
+  color: var(--white-muted);
+  font-size: clamp(1rem, 1.7vw, 1.15rem);
+  line-height: 1.6;
+  max-width: 660px;
+  margin: 0 auto 2.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* --- 8. SECTION HEADERS & BADGES --- */
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 3.5rem;
+}
+
+.section-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1rem;
+}
+
+.badge-saffron {
+  background: rgba(255, 111, 30, 0.12);
+  color: var(--saffron-light);
+  border: 1px solid rgba(255, 111, 30, 0.3);
+}
+
+.badge-white {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white-pure);
+  border: 1px solid var(--border-active);
+}
+
+.badge-green {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--green-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.5vw, 2.65rem);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.section-description {
+  color: var(--white-muted);
+  font-size: 0.95rem;
+}
+
+/* --- 9. MISSION SECTION & TACTICAL RADAR --- */
+.mission-section {
+  padding: 5rem 0;
+}
+
+.tactical-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.radar-display {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radar-rings {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed var(--border-subtle);
+}
+
+.ring-outer { width: 100%; height: 100%; border-color: rgba(255, 255, 255, 0.12); }
+/* Mid Ring incorporates subtle Chakra Blue accent */
+.ring-mid { width: 68%; height: 68%; border-color: rgba(37, 99, 235, 0.28); }
+.ring-inner { width: 38%; height: 38%; border-color: rgba(16, 185, 129, 0.25); }
+
+.radar-sweep {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 0;
+  right: 0;
+  transform-origin: bottom left;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 111, 30, 0.22) 60deg, transparent 90deg);
+  animation: sweep 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Tactical Radar Center Core with Chakra Blue Glow Accent */
+.radar-center-content {
+  text-align: center;
+  z-index: 2;
+  background: rgba(12, 16, 26, 0.92);
+  padding: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--chakra-blue);
+  box-shadow: 
+    0 0 30px var(--chakra-blue-glow),
+    inset 0 0 15px rgba(37, 99, 235, 0.25);
+}
+
+.radar-core-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--saffron-light), var(--chakra-blue-light), var(--green-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.radar-core-subtitle {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--white-muted);
+}
+
+.radar-tag {
+  position: absolute;
+  background: rgba(14, 18, 28, 0.88);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(10px);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  z-index: 3;
+}
+
+.dot { width: 6px; height: 6px; border-radius: 50%; }
+.saffron-dot { background: var(--saffron-base); box-shadow: 0 0 6px var(--saffron-base); }
+.green-dot { background: var(--green-light); box-shadow: 0 0 6px var(--green-light); }
+.white-dot { background: var(--white-pure); box-shadow: 0 0 6px var(--white-pure); }
+
+.tag-top { top: 4%; left: 50%; transform: translateX(-50%); }
+.tag-bottom-left { bottom: 8%; left: 0%; }
+.tag-bottom-right { bottom: 8%; right: 0%; }
+
+.stream-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.stream-card {
+  display: flex;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  transition: all var(--transition-smooth);
+}
+
+.stream-card:hover {
+  transform: translateX(8px);
+  background: var(--bg-card-hover);
+  border-color: var(--border-active);
+}
+
+.stream-indicator {
+  width: 4px;
+  flex-shrink: 0;
+}
+
+.stream-saffron .stream-indicator { background: linear-gradient(to bottom, var(--saffron-amber), var(--saffron-base)); }
+.stream-white .stream-indicator { background: linear-gradient(to bottom, #ffffff, var(--chakra-blue-light)); }
+.stream-green .stream-indicator { background: linear-gradient(to bottom, var(--green-emerald), var(--green-base)); }
+
+.stream-content {
+  padding: 1.4rem;
+}
+
+.stream-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.stream-num {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--white-muted);
+}
+
+.stream-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--white-pure);
+}
+
+.stream-card p {
+  font-size: 0.885rem;
+  color: var(--white-muted);
+  line-height: 1.5;
+}
+
+/* --- 10. ARMED FORCES SECTION & HUD CARDS --- */
+.forces-section {
+  padding: 5rem 0;
+}
+
+.hud-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.35rem;
+}
+
+.hud-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(16px);
+  transition: all var(--transition-smooth);
+}
+
+.hud-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.28);
+  background: var(--bg-card-hover);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+}
+
+.corner-cross {
+  position: absolute;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.22);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.cross-tl { top: 8px; left: 8px; }
+.cross-tr { top: 8px; right: 8px; }
+.cross-bl { bottom: 8px; left: 8px; }
+.cross-br { bottom: 8px; right: 8px; }
+
+.model-wrapper {
+  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.08) 0%, rgba(0, 0, 0, 0.6) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.model-fallback {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-muted);
+  gap: 0.35rem;
+}
+
+.model-fallback .symbol {
+  font-size: 1.5rem;
+  color: var(--white-pure);
+}
+
+.hud-info {
+  padding: 1.25rem 0.25rem 0.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.hud-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.hud-status {
+  font-size: 0.675rem;
+  font-weight: 700;
+  letter-spacing: 0.75px;
+}
+
+.status-saffron { color: var(--saffron-light); }
+.status-white { color: #cbd5e1; }
+.status-green { color: var(--green-emerald); }
+
+.hud-code {
+  font-size: 0.65rem;
+  color: var(--white-muted);
+  font-family: monospace;
+}
+
+.hud-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.hud-desc {
+  color: var(--white-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+/* --- 11. SSB PIPELINE & TANK CONVOY --- */
+.journey-section {
+  padding: 5rem 0;
+}
+
+.pipeline-flow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.pipeline-track {
+  position: absolute;
+  top: 24px;
+  left: 3%;
+  width: 94%;
+  height: 2px;
+  /* Track includes Tiranga colours with a center Chakra Blue accent line */
+  background: linear-gradient(90deg, var(--saffron-base), var(--chakra-blue-light) 50%, var(--green-base));
+  opacity: 0.45;
+  z-index: 0;
+}
+
+.traveling-tank {
+  position: absolute;
+  top: -16px;
+  left: 0;
+  width: 38px;
+  height: 26px;
+  filter: drop-shadow(0 0 10px rgba(255, 111, 30, 0.8));
+  animation: tankContinuousLtoR 12s linear infinite;
+  z-index: 3;
+}
+
+.tank-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@keyframes tankContinuousLtoR {
+  0% { left: 0%; opacity: 0; transform: translateX(0); }
+  3% { opacity: 1; }
+  97% { opacity: 1; }
+  100% { left: 100%; opacity: 0; transform: translateX(-100%); }
+}
+
+.pipeline-node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.node-marker {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-active);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1.5rem;
+  transition: all var(--transition-smooth);
+}
+
+.node-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--white-pure);
+}
+
+.node-pulse {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  transition: all var(--transition-smooth);
+}
+
+.pipeline-node:hover .node-marker {
+  transform: scale(1.1);
+  border-color: var(--saffron-light);
+  box-shadow: 0 0 20px var(--saffron-glow);
+}
+
+.node-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  width: 100%;
+  transition: all var(--transition-smooth);
+}
+
+.node-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-active);
+  background: var(--bg-card-hover);
+}
+
+.node-badge {
+  font-size: 0.675rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--saffron-light);
+  margin-bottom: 0.35rem;
+}
+
+.node-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.node-card p {
+  color: var(--white-muted);
+  font-size: 0.785rem;
+  line-height: 1.45;
+}
+
+/* --- 12. AVIONICS TELEMETRY TERMINAL (RESOURCES CONSOLE) --- */
+.resources-section {
+  padding: 5rem 0;
+}
+
+.avionics-console {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  background: rgba(10, 14, 22, 0.82);
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.85);
+}
+
+.console-sidebar {
+  background: rgba(6, 8, 14, 0.9);
+  border-right: 1px solid var(--border-subtle);
+  padding: 1.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.console-header-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--white-muted);
+  letter-spacing: 1px;
+}
+
+.blink-led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green-light);
+  box-shadow: 0 0 8px var(--green-light);
+  animation: blinkLed 1.5s infinite;
+}
+
+@keyframes blinkLed {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.channel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex-grow: 1;
+}
+
+.channel-btn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.channel-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-active);
+}
+
+.channel-btn.active {
+  background: rgba(37, 99, 235, 0.12); /* Subtle Chakra Blue Active Highlight */
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.chan-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  font-family: monospace;
+  margin-bottom: 0.25rem;
+}
+
+.chan-code { color: var(--white-muted); }
+
+.chan-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white-pure);
+  display: block;
+}
+
+.chan-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.channel-btn.active .chan-bar { opacity: 1; }
+
+.bar-saffron { background: var(--saffron-base); }
+.bar-white { background: #ffffff; }
+.bar-green { background: var(--green-light); }
+
+.console-system-status {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+}
+
+.sys-row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--white-muted);
+}
+
+.sys-row code { color: var(--white-pure); }
+
+.console-viewport {
+  padding: 2.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.telemetry-panel {
+  display: none;
+  width: 100%;
+  animation: fadeInPanel 0.4s var(--ease-spring);
+}
+
+.telemetry-panel.active { display: block; }
+
+@keyframes fadeInPanel {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.panel-sub {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--saffron-light);
+  letter-spacing: 1px;
+}
+
+.panel-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--white-pure);
+  margin-top: 0.2rem;
+}
+
+.panel-desc {
+  color: var(--white-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.data-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.matrix-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cell-label {
+  font-size: 0.7rem;
+  color: var(--white-muted);
+  font-family: monospace;
+  letter-spacing: 0.5px;
+}
+
+.cell-value {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--white-pure);
+}
+
+.cell-foot {
+  font-size: 0.75rem;
+  color: var(--white-muted);
+}
+
+.panel-bottom-action { display: flex; }
+
+/* --- 13. FOOTER & AMBIENT GLOW --- */
+#footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 4rem 1.5rem 2.5rem;
+  background: rgba(6, 8, 14, 0.95);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.footer-text {
+  color: var(--white-muted);
+  font-size: 0.85rem;
+}
+
+/* Ambient Bottom Glow incorporating Saffron, Chakra Blue, and Emerald Green */
+.footer-bottom-glow {
+  position: absolute;
+  bottom: -160px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 550px;
+  height: 220px;
+  background: radial-gradient(
+    ellipse at center, 
+    rgba(255, 111, 30, 0.28) 0%, 
+    rgba(37, 99, 235, 0.28) 45%, 
+    rgba(16, 185, 129, 0.28) 80%, 
+    transparent 100%
+  ) !important;
+  pointer-events: none;
+}
+
+/* --- 14. RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 992px) {
+  .tactical-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .radar-display {
+    max-width: 320px;
+  }
+
+  .pipeline-flow {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .pipeline-track {
+    display: none;
+  }
+
+  .pipeline-node {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .node-marker {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .node-card {
+    text-align: left;
+  }
+
+  .avionics-console {
+    grid-template-columns: 1fr;
+  }
+
+  .console-sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .data-matrix-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #0c101a;
+    flex-direction: column;
+    padding: 1.25rem;
+    border-radius: 0;
+    border-top: none;
+  }
+
+  .nav-progress-fill {
+    display: none;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-actions {
+    display: none;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-section {
+    padding: 4.5rem 1rem 3rem;
+  }
+
+  .console-viewport {
+    padding: 1.5rem;
+  }
+
+  /* --- FEATURED 3D SHOWCASE & KANBAN BOX --- */
+.showcase-section {
+    padding: 2rem 0 5rem;
+}
+
+.showcase-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px; /* Constrains the width for a focused view */
+    margin: 0 auto;
+}
+
+/* The 3D Window */
+.showcase-window {
+    position: relative;
+    background: radial-gradient(circle at center, rgba(230, 233, 238, 0.15) 0%, rgba(0, 0, 0, 0.8) 100%);
+    border: 1px solid var(--border-active);
+    border-radius: var(--radius-lg);
+    height: 450px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+}
+
+.showcase-window model-viewer {
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.window-overlay {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 3;
+    background: rgba(14, 18, 28, 0.7);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(10px);
+}
+
+/* Kanban Information Box */
+.kanban-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all var(--transition-smooth);
+}
+
+/* Page Layout */
+.model-page-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* 3D Model Viewer Container */
+.model-viewer-box {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: radial-gradient(circle at center, rgba(37, 99, 235, 0.12) 0%, rgba(10, 14, 23, 0.95) 100%);
+    border: 1px solid var(--border-active);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.model-viewer-box model-viewer {
+    width: 100%;
+    height: 100%;
+}
+
+.hud-status-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 5;
+    background: rgba(14, 18, 28, 0.85);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(8px);
+}
+
+/* Information Box */
+.model-info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.model-title {
+    font-size: 1.75rem;
+    color: var(--white-pure);
+    margin-top: 0.5rem;
+}
+
+.model-description {
+    color: var(--white-muted);
+    line-height: 1.6;
+}
+
+/* Specifications Grid */
+.spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.spec-label {
+    font-size: 0.7rem;
+    font-family: monospace;
+    color: var(--white-muted);
+    letter-spacing: 0.05em;
+}
+
+.spec-value {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white-pure);
+}
+
+.kanban-box:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+.kanban-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.kanban-metrics .metric {
+    display: flex;
+    flex-direction: column;
+}
+
+.kanban-metrics .label {
+    font-size: 0.65rem;
+    color: var(--white-muted);
+    font-family: monospace;
+}
+
+.kanban-metrics .value {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white-pure);
+}
+
+.kanban-footer {
+    margin-top: 0.5rem;
+}
+}
+/* Voice Agent Widget Styles */
+.voice-widget-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    font-family: var(--font-main);
+}
+
+.voice-trigger-btn {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--saffron-base), var(--green-base));
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 25px rgba(255, 111, 30, 0.5);
+    transition: transform var(--transition-fast);
+}
+
+.voice-trigger-btn:hover {
+    transform: scale(1.08);
+}
+
+.voice-panel {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 320px;
+    background: rgba(12, 16, 26, 0.95);
+    border: 1px solid var(--border-active);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.voice-panel.hidden {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+}
+
+.voice-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--white-muted);
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.voice-body {
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.voice-status-text {
+    font-size: 0.8rem;
+    color: var(--saffron-light);
+    font-family: monospace;
+    margin-bottom: 1rem;
+}
+
+.audio-wave {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    height: 30px;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.wave-bar {
+    width: 4px;
+    height: 8px;
+    background: var(--green-light);
+    border-radius: 2px;
+    transition: height 0.2s ease;
+}
+
+.voice-panel.listening .wave-bar {
+    animation: wavePulse 0.8s infinite alternate;
+}
+
+.voice-panel.listening .wave-bar:nth-child(2) { animation-delay: 0.2s; }
+.voice-panel.listening .wave-bar:nth-child(3) { animation-delay: 0.4s; }
+.voice-panel.listening .wave-bar:nth-child(4) { animation-delay: 0.1s; }
+.voice-panel.listening .wave-bar:nth-child(5) { animation-delay: 0.3s; }
+
+@keyframes wavePulse {
+    0% { height: 8px; }
+    100% { height: 28px; }
+}
+
+.voice-transcript {
+    font-size: 0.85rem;
+    color: var(--white-muted);
+    font-style: italic;
+    background: rgba(0,0,0,0.3);
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    min-height: 50px;
+}
+
+.voice-footer {
+    padding: 1rem;
+    border-top: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.voice-header small,
+.voice-footer small {
+    color: var(--white-muted);
+    font-size: 0.72rem;
+}
+
+.voice-actions {
+    display: flex;
+    gap: 0.65rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.voice-listen-btn,
+.voice-stop-btn {
+    border-radius: 999px;
+    border: 1px solid var(--border-active);
+    color: var(--white-pure);
+    cursor: pointer;
+    font: inherit;
+    padding: 0.55rem 0.9rem;
+}
+
+.voice-listen-btn { background: linear-gradient(135deg, var(--saffron-base), var(--green-base)); }
+.voice-stop-btn { background: transparent; color: var(--white-muted); }
+.voice-listen-btn:disabled { cursor: not-allowed; opacity: 1; }
+
+@media (max-width: 480px) {
+    .voice-widget-container { right: 16px; bottom: 16px; }
+    .voice-panel { width: min(320px, calc(100vw - 32px)); }
+}
+```css
+/* ================================
+   S2Y MISSION KIT IMAGE CARD
+   ================================ */
+
+.mission-kit-viewer {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+/* Main Mission Kit Image */
+.mission-kit-image {
+    display: block;
+    width: 100%;
+    max-width: 650px;
+    height: 450px;
+    object-fit: contain;
+    object-position: center;
+    margin: auto;
+    border-radius: 12px;
+}
+
+/* Top Status Bar */
+.mission-kit-viewer .status-bar {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    right: 20px;
+    z-index: 5;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+}
+
+/* Image Overlay */
+.mission-kit-viewer .asset-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+    right: 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+
+    pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .mission-kit-viewer {
+        min-height: 400px;
+        padding: 1rem;
+    }
+
+    .mission-kit-image {
+        width: 100%;
+        height: 350px;
+    }
+
+    .mission-kit-viewer .asset-overlay {
+        font-size: 0.65rem;
+        left: 15px;
+        right: 15px;
+    }
+}
+```
+
+/* ==========================================================================\n   🇮🇳 SHISHYA2YODDHA — PURE INDIAN TRICOLOUR THEME OVERRIDES\n   Theme: Saffron • White • India Green • Ashoka Chakra Blue\n   This section intentionally overrides the previous visual treatment.\n   ========================================================================== */
+:root {
+  --bg-main: #071a12;
+  --bg-surface: #0b2118;
+  --bg-card: rgba(255,255,255,.075);
+  --bg-card-hover: rgba(255,255,255,.12);
+  --border-subtle: rgba(255,255,255,.16);
+  --border-active: rgba(255,255,255,.38);
+  --saffron-base: #ff671f;
+  --saffron-light: #ff8a3d;
+  --saffron-amber: #ffb067;
+  --saffron-glow: rgba(255,103,31,.34);
+  --white-pure: #fffdf8;
+  --white-muted: #d8e0db;
+  --white-faint: rgba(255,255,255,.055);
+  --green-base: #138808;
+  --green-light: #21a915;
+  --green-emerald: #45c83b;
+  --green-glow: rgba(19,136,8,.32);
+  --chakra-navy: #000080;
+  --chakra-blue: #000080;
+  --chakra-blue-light: #2947b8;
+  --chakra-blue-glow: rgba(0,0,128,.28);
+}
+
+html, body { background: #071a12 !important; }
+body {
+  background:
+    linear-gradient(180deg, rgba(255,103,31,.075) 0 18%, transparent 32%),
+    linear-gradient(180deg, #071a12 0%, #081d14 48%, #06170f 100%) !important;
+}
+
+/* Tricolour atmosphere — broad horizontal flag-inspired bands */
+.bg-mesh {
+  background:
+    linear-gradient(180deg,
+      rgba(255,103,31,.24) 0%,
+      rgba(255,103,31,.08) 25%,
+      rgba(255,255,255,.045) 36%,
+      rgba(255,255,255,.015) 49%,
+      rgba(19,136,8,.08) 63%,
+      rgba(19,136,8,.27) 100%) !important;
+  opacity: 1 !important;
+}
+
+/* A thin tricolour rail appears throughout the interface */
+header::after, footer::before {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg,
+    #ff671f 0%, #ff671f 33.33%,
+    #ffffff 33.33%, #ffffff 66.66%,
+    #138808 66.66%, #138808 100%);
+  position: absolute;
+  left: 0;
+}
+header::after { bottom: 0; }
+footer::before { top: 0; }
+
+/* Header / navigation */
+header, .site-header, .navbar {
+  background: rgba(5,22,14,.92) !important;
+  border-color: rgba(255,255,255,.16) !important;
+}
+nav a:hover, nav a.active, .nav-link:hover, .nav-link.active {
+  color: #ff8a3d !important;
+}
+
+/* Buttons become unmistakably Indian-tricolour */
+.btn-primary {
+  background: linear-gradient(135deg, #ff671f 0%, #ff7d32 48%, #138808 100%) !important;
+  border: 1px solid rgba(255,255,255,.75) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 28px rgba(255,103,31,.18), 0 10px 30px rgba(19,136,8,.16) !important;
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg, #ff671f 0%, #ff671f 30%, #fff 50%, #138808 70%, #138808 100%) !important;
+  color: #071a12 !important;
+  border-color: #fff !important;
+}
+.btn-secondary, .btn-nav {
+  background: rgba(255,255,255,.055) !important;
+  border: 1px solid rgba(255,255,255,.28) !important;
+  color: #fff !important;
+}
+.btn-secondary:hover, .btn-nav:hover {
+  background: linear-gradient(90deg, rgba(255,103,31,.28), rgba(255,255,255,.14), rgba(19,136,8,.28)) !important;
+  border-color: #fff !important;
+}
+.btn-hud:hover {
+  background: linear-gradient(90deg, rgba(255,103,31,.3), rgba(255,255,255,.1), rgba(19,136,8,.3)) !important;
+}
+
+/* Text hierarchy */
+.text-gradient-saffron,
+.text-gradient-green,
+.text-gradient {
+  background: linear-gradient(90deg, #ff7b32 0%, #fff 50%, #27a81b 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Hero — white centre with saffron/green framing */
+.hero, .hero-section {
+  background:
+    radial-gradient(circle at 15% 35%, rgba(255,103,31,.18), transparent 30%),
+    radial-gradient(circle at 85% 65%, rgba(19,136,8,.2), transparent 30%) !important;
+}
+.hero::before, .hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  width: 24%;
+  height: 5px;
+  top: 50%;
+}
+.hero::before { left: 0; background: #ff671f; }
+.hero::after { right: 0; background: #138808; }
+
+/* Cards: clean white-ish surfaces with tricolour top edge */
+.hud-card, .force-card, .node-card, .stream-card,
+.avionics-console, .mission-card, .resource-card, .model-card,
+.card, .feature-card, .success-card, .registration-card {
+  background: linear-gradient(145deg, rgba(255,255,255,.105), rgba(255,255,255,.045)) !important;
+  border-color: rgba(255,255,255,.2) !important;
+  box-shadow: 0 18px 45px rgba(0,0,0,.22) !important;
+}
+.hud-card::before, .force-card::before, .node-card::before,
+.stream-card::before, .mission-card::before, .resource-card::before,
+.model-card::before, .feature-card::before, .success-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff671f 0 33.33%, #fff 33.33% 66.66%, #138808 66.66%);
+  opacity: .9;
+}
+.hud-card:hover, .force-card:hover, .node-card:hover,
+.stream-card:hover, .mission-card:hover, .resource-card:hover,
+.model-card:hover, .feature-card:hover, .success-card:hover {
+  border-color: rgba(255,255,255,.42) !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,.3), 0 0 0 1px rgba(255,255,255,.05) !important;
+}
+
+/* Force/resource accent states */
+.stream-saffron .stream-indicator { background: #ff671f !important; }
+.stream-white .stream-indicator { background: #fff !important; }
+.stream-green .stream-indicator { background: #138808 !important; }
+.node-badge, .stream-card h4 { color: #ff9a55 !important; }
+.pipeline-node:hover .node-marker { border-color: #ff671f !important; }
+.node-marker { border-color: rgba(255,255,255,.28) !important; }
+
+/* Chakra details */
+.chakra, .ashoka-chakra, .chakra-wheel, .chakra-icon {
+  color: #000080 !important;
+  border-color: #000080 !important;
+}
+
+/* Section separators */
+section::after {
+  content: "";
+  display: block;
+  width: min(180px, 35%);
+  height: 3px;
+  margin: 3.5rem auto 0;
+  background: linear-gradient(90deg, #ff671f 0 33.33%, #fff 33.33% 66.66%, #138808 66.66%);
+  opacity: .85;
+}
+
+/* Inputs / registration / forms */
+input, textarea, select, .form-control {
+  background: rgba(255,255,255,.07) !important;
+  color: #fff !important;
+  border-color: rgba(255,255,255,.2) !important;
+}
+input:focus, textarea:focus, select:focus, .form-control:focus {
+  border-color: #ff671f !important;
+  box-shadow: 0 0 0 3px rgba(255,103,31,.12), 0 0 0 1px rgba(19,136,8,.18) !important;
+}
+
+/* Tags, badges and status indicators */
+.badge, .tag, .pill, .status-badge {
+  border-color: rgba(255,255,255,.25) !important;
+  background: linear-gradient(90deg, rgba(255,103,31,.2), rgba(255,255,255,.08), rgba(19,136,8,.2)) !important;
+}
+
+/* 3D model frames */
+model-viewer {
+  background: linear-gradient(145deg, rgba(255,103,31,.08), rgba(255,255,255,.035), rgba(19,136,8,.09)) !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+}
+
+/* Mission / radar area */
+.radar, .radar-container, .mission-radar {
+  border-color: rgba(255,255,255,.2) !important;
+  background:
+    radial-gradient(circle, rgba(0,0,128,.16) 0 2px, transparent 3px),
+    linear-gradient(135deg, rgba(255,103,31,.08), rgba(19,136,8,.08)) !important;
+}
+
+/* Footer */
+footer {
+  background: #04110b !important;
+  border-top-color: rgba(255,255,255,.15) !important;
+}
+
+/* Make important accent classes follow the tricolour */
+.accent-saffron, .saffron { color: #ff7b32 !important; }
+.accent-green, .green { color: #32b526 !important; }
+.accent-blue, .chakra-blue { color: #000080 !important; }
+.border-saffron { border-color: #ff671f !important; }
+.border-green { border-color: #138808 !important; }
+
+/* Mobile keeps the flag structure visible without clutter */
+@media (max-width: 768px) {
+  .hero::before, .hero::after { width: 12%; }
+  section::after { margin-top: 2.5rem; }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Background grid removed --- */
+body::before, body::after, .background-grid, .bg-grid, .grid-background,
+.grid-lines, .grid-overlay, .hero-grid {
+  background-image: none !important;
+  background: transparent !important;
+  opacity: 0 !important;
+  display: none !important;
+}
